@@ -4,140 +4,39 @@ import { isCallChain } from 'typescript';
 
 const Dashboard: React.FunctionComponent = () => {
 
-  const [value, setValue] = React.useState("");
+  const [currentInput, setCurrentInput] = React.useState('')
+  const [list, setList] = React.useState([]);
 
-  const [age, setAge] = React.useState(0);
-
-  const [male, setMale] = React.useState("");
-
-  const [female, setFemale] = React.useState("");
-
-  const [close, setClose] = React.useState();
-
-  const [open, setOpen] = React.useState(false);
-
-
-  console.log(value)
-
-  const onClickMale = () => {
-    setValue(value)
+  const AddTodo = (event) => {
+    event.preventDefault();
+    const newList = list;
+    newList.push(currentInput);
+    setList([...newList]);
+    console.log(list);
   }
-
-  const onClickFemale = () => {
-    setValue(value)
-  }
-
-  const onChangeValue = (value) => {
-    setValue(value)
-  }
-  console.log(age)
-
-
-  const onClickPlus = () => {
-    setAge(age + 1)
-  }
-
-  const onClickMinus = () => {
-    if (age > 0) {
-      setAge(age - 1)
-    }
-
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log(value);
-  }
-
-  const handleSubmit = (value) => {
-    setValue(value)
-    
-
-  };
- 
- 
-    const handleClose = () => {
-      setOpen(false);
-    };
-   
-    const handleClick = () => {
-      setOpen(true);
-    }
-
-// const onClickOpen = () => {
-    
-  }
-
-  const [gender, setGender] = React.useState("");
-
-  const [isChecked, setIsChecked] = React.useState(false);
-
-  
-  
-  console.log(isChecked)
-  const onChangeRadio = (_, event) => {
-    console.log(event.target.value)
-    setIsChecked(!isChecked)
-  }
-
   return (
-    <PageSection>
-      <Form>
-        <FormGroup label="Full name" isRequired fieldId="simple-form-email-01" >
-          <TextInput value={value} onChange={onChangeValue}>
+    <div className="App">
 
-          </TextInput>
-
-        </FormGroup> 
-
-        <FormGroup label="Age" isRequired fieldId="simple-form-email-01">
-          <NumberInput value={age} onMinus={onClickMinus} onPlus={onClickPlus} >
-
-          </NumberInput>
+      <h1>TODO APP</h1>
+<form className="input-box">
+<input className="input" placeholder="enter you name" onChange={(event)=>{
+  setCurrentInput(event.target.value)
+}}/>
 
 
-        </FormGroup> 
-        <FormGroup fieldId={"radio button"}>
-        <Radio name="radio-1"
-        isChecked={isChecked}
-        onChange={onChangeRadio}
-          label="Male"
-          id="radio-controlled"
-          value={"male"}
-         
-          >
-
-        </Radio>
-        <Radio name="radio-1"
-        isChecked={isChecked}
-        onChange={onChangeRadio}
-          label="Female"
-          id="radio-controlled"
-          value={"female"}
->
-        </Radio>
-        </FormGroup>
-        <FormGroup fieldId={"Dropdown"}>
-        {/* <DropdownToggle id="toggle-id" value={value} >
-            Months
-       </DropdownToggle> */}
-        </FormGroup>
+<button className="add-button" onClick={AddTodo}>Add</button>
 
 
-        <ActionGroup>
-          <Button variant="primary">Submit</Button>
-          <Button variant="link">Cancel</Button>
-          {/* <Button variant="primary" onClick={() => {}}>Submit</Button> */}
+</form>
+{list.map((singleTodo)=>{
+  return<div>{singleTodo}</div>
+})}
 
-  <button type="submit" onClick={(e)=>onsubmit}>submit</button>
-          
-          
-        </ActionGroup>
 
-      </Form>
+</div>
 
-    </PageSection>
   )
+}  
 
-}
 
 export { Dashboard };
