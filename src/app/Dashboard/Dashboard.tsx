@@ -15,7 +15,7 @@ const Dashboard: React.FunctionComponent = () => {
     console.log(list);
   }
   return (
-    <div className="App">
+    <PageSection>
 
       <h1>TODO APP</h1>
 <form className="input-box">
@@ -33,7 +33,7 @@ const Dashboard: React.FunctionComponent = () => {
 })}
 
 
-</div>
+</PageSection>
 
   )
 }  
