@@ -4,13 +4,14 @@ import { PageSection, Title } from '@patternfly/react-core';
 const Dashboard: React.FunctionComponent = () => {
 
   const [currentInput, setCurrentInput] = React.useState('')
-  const [list, setList] = React.useState([]);
+  const [list, setList] = React.useState<string[]>([]);
 
   const AddTodo = (event) => {
     event.preventDefault();
     // const newList = list;
     // newList.push(currentInput);
     setList([...list, currentInput]);
+    setCurrentInput("");
     console.log(list);
   }
   return (
