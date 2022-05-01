@@ -8,18 +8,17 @@ const Dashboard: React.FunctionComponent = () => {
 
   const AddTodo = (event) => {
     event.preventDefault();
-    // const newList = list;
-    // newList.push(currentInput);
     setList([...list, currentInput]);
     setCurrentInput("");
-    console.log(list);
+    
   }
   return (
   <PageSection>
     <Title headingLevel="h1" size="lg">Dashboard Page Title!</Title>
     <h1>TODO APP</h1>
 <form className="input-box">
-<input className="input" placeholder="enter you name" onChange={(event)=>{
+<input className="input" placeholder="enter you name" value={currentInput} onChange={(event)=>{
+  
   setCurrentInput(event.target.value)
 }}/>
 
@@ -31,8 +30,6 @@ const Dashboard: React.FunctionComponent = () => {
 {list.map((singleTodo)=>{
   return<div>{singleTodo}</div>
 })}
-
-
 
   </PageSection>
 
