@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { TableComposable, Caption, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table';
-import { string } from 'prop-types';
 import axios from 'axios';
 import { PageSection } from '@patternfly/react-core';
 
